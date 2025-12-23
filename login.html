@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小兔鲜儿 - 登录</title>
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/login.css">
+</head>
+<body>
+
+  <div class="login-header">
+    <div class="wrapper">
+      <h1><a href="./index.html">小兔鲜儿</a></h1>
+    </div>
+  </div>
+
+  <div class="login-body">
+    <div class="wrapper">
+      <div class="login-container">
+        
+        <div class="login-title">
+          <h3>密码登录</h3>
+        </div>
+
+        <form class="login-form">
+          <div class="input-item">
+            <input type="text" id="username" placeholder="请输入用户名">
+          </div>
+
+          <div class="input-item password-box">
+            <input type="password" id="password" placeholder="请输入登录密码">
+            <span id="toggle-eye" class="eye-icon"></span>
+          </div>
+
+          <button type="button" class="btn-login" onclick="doLogin()">登 录</button>
+          
+          <div class="other-links" style="margin-top: 15px; display: flex; justify-content: space-between;">
+             <a href="#">忘记密码</a>
+             <a href="./register.html" style="color: #ff5000; font-weight: bold;">免费注册</a>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ================= 1. 登录逻辑 =================
+    function doLogin() {
+      const inputUser = document.getElementById('username').value;
+      const inputPass = document.getElementById('password').value;
+
+      if (!inputUser || !inputPass) {
+        alert('请输入账号和密码');
+        return;
+      }
+
+      const storedUser = localStorage.getItem('myUser');
+      const storedPass = localStorage.getItem('myPass');
+
+      if (!storedUser) {
+        if (inputUser === 'admin' && inputPass === '123456') {
+           alert('管理员登录成功！');
+           location.href = './index.html';
+           return;
+        }
+        alert('该账号不存在，请先注册！');
+        return;
+      }
+
+      if (inputUser === storedUser && inputPass === storedPass) {
+        alert('登录成功！欢迎回来，' + inputUser);
+        location.href = './index.html'; 
+      } else {
+        alert('账号或密码错误，请重试！');
+      }
+    }
+
+    // ================= 2. 眼睛图标控制 =================
+    const passwordInput = document.getElementById('password');
+    const toggleEye = document.getElementById('toggle-eye');
+
+    // 防止点击图标失去焦点
+    toggleEye.addEventListener('mousedown', function(e) {
+      e.preventDefault(); 
+    });
+
+    // 点击切换：只变色，不变形状
+    toggleEye.addEventListener('click', function() {
+      const currentType = passwordInput.getAttribute('type');
+      
+      if (currentType === 'password') {
+        // 显示密码：变橙色
+        passwordInput.setAttribute('type', 'text');
+        this.classList.add('active');
+      } else {
+        // 隐藏密码：变回灰色
+        passwordInput.setAttribute('type', 'password');
+        this.classList.remove('active');
+      }
+    });
+  </script>
+
+</body>
+</html>

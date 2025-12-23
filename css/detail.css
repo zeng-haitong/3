@@ -1,0 +1,202 @@
+/* ================= 面包屑导航 ================= */
+.bread-crumb {
+    height: 50px;
+    line-height: 50px;
+    color: #666;
+    font-size: 14px;
+}
+
+.bread-crumb .iconfont {
+    font-size: 12px;
+    margin: 0 5px;
+}
+
+.bread-crumb a:hover {
+    color: #5EB69C;
+}
+
+/* ================= 商品信息主区域 ================= */
+.goods-info {
+    display: flex;
+    background-color: #fff;
+    min-height: 600px;
+}
+
+/* --- 左侧图片区 --- */
+.goods-info .media {
+    width: 580px;
+    height: 600px;
+    padding: 30px 50px;
+}
+
+.media .middle {
+    width: 480px;
+    height: 480px;
+    background-color: #f5f5f5;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.media .middle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 保证图片充满盒子且不变形 */
+}
+
+/* 小图列表 */
+.media .small {
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+    /* 两端对齐，中间留空 */
+}
+
+.media .small li {
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    /* 默认透明边框，防止抖动 */
+}
+
+/* 鼠标放上去或选中状态 */
+.media .small li.active,
+.media .small li:hover {
+    border-color: #5EB69C;
+}
+
+/* --- 右侧文字区 --- */
+.goods-info .spec {
+    flex: 1;
+    padding: 30px 30px 30px 0;
+}
+
+.spec .g-name {
+    font-size: 22px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.spec .g-desc {
+    color: #999;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.spec .g-price {
+    background-color: #f5f5f5;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.g-price span {
+    font-size: 28px;
+    color: #CF4444;
+    margin-right: 10px;
+}
+
+.g-price del {
+    font-size: 16px;
+    color: #999;
+}
+
+/* 服务信息 dl dt dd */
+.g-service {
+    background-color: #fff;
+    padding: 10px 0;
+    border-bottom: 1px solid #ededed;
+    margin-bottom: 20px;
+}
+
+.g-service dl {
+    display: flex;
+    margin-bottom: 10px;
+    line-height: 30px;
+}
+
+.g-service dt {
+    width: 50px;
+    color: #999;
+}
+
+.g-service dd {
+    color: #666;
+    flex: 1;
+}
+
+/* 数量选择 */
+.num-box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.num-box .label {
+    width: 50px;
+    color: #999;
+}
+
+.my-input-number {
+    display: flex;
+    border: 1px solid #e4e4e4;
+}
+
+.my-input-number button {
+    width: 35px;
+    height: 35px;
+    background-color: #f5f5f5;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.my-input-number button:hover {
+    background-color: #e4e4e4;
+}
+
+.my-input-number input {
+    width: 60px;
+    height: 35px;
+    border: none;
+    border-left: 1px solid #e4e4e4;
+    border-right: 1px solid #e4e4e4;
+    text-align: center;
+    font-size: 16px;
+}
+
+/* 按钮组 */
+.btn-group {
+    margin-top: 20px;
+}
+
+.btn-group button {
+    width: 180px;
+    height: 50px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+}
+
+/* 加入购物车按钮 */
+.btn-add {
+    background-color: #ff5000;
+    color: #fff;
+    margin-right: 20px;
+}
+
+.btn-add:hover {
+    background-color: #e04600;
+}
+
+/* 立即购买按钮 */
+.btn-buy {
+    background-color: #ffeded;
+    color: #ff5000;
+    border: 1px solid #ff5000 !important;
+}

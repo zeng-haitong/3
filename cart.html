@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小兔鲜儿 - 购物车</title>
+    <link rel="stylesheet" href="./iconfont/iconfont.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <style>
+        .cart-wrapper {
+            background: #fff;
+            padding: 20px;
+            min-height: 400px;
+            margin-top: 20px;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        th {
+            background: #f5f5f5;
+            font-weight: normal;
+        }
+
+        td.t-goods {
+            display: flex;
+            align-items: center;
+            text-align: left;
+        }
+
+        td.t-goods img {
+            width: 80px;
+            height: 80px;
+            margin-right: 15px;
+            border: 1px solid #eee;
+        }
+
+        .num-box {
+            display: inline-flex;
+            border: 1px solid #ddd;
+        }
+
+        .num-box button {
+            width: 30px;
+            height: 30px;
+            background: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .num-box input {
+            width: 40px;
+            text-align: center;
+            border: none;
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+        }
+
+        .cart-footer {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f5f5f5;
+            height: 80px;
+            padding: 0 30px;
+        }
+
+        .btn-pay {
+            background: #CF4444;
+            color: #fff;
+            width: 120px;
+            height: 40px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-left: 20px;
+        }
+
+        .total-price {
+            color: #CF4444;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0 5px;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 50px 0;
+            color: #999;
+            display: none;
+        }
+
+        .empty-cart a {
+            color: #5EB69C;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header wrapper">
+        <div class="logo">
+            <h1><a href="./index.html">小兔鲜儿</a></h1>
+        </div>
+        <div class="nav">
+            <ul>
+                <li><a href="./index.html">首页</a></li>
+                <li><a href="#">生鲜</a></li>
+                <li><a href="#">美食</a></li>
+            </ul>
+        </div>
+        <div class="cart">
+            <a href="./cart.html">
+                <img src="./uploads/购物 车1.png" alt="购物车" class="cart-icon">
+                <i id="cart-count">0</i>
+            </a>
+        </div>
+    </div>
+
+    <div class="bread-crumb wrapper">
+        <a href="./index.html">首页</a> > <span>购物车</span>
+    </div>
+
+    <div class="cart-wrapper wrapper">
+        <div class="cart-header">
+            <h3>我的购物车</h3>
+            <span style="font-size: 14px; color: #999;">温馨提示：产品是否购买成功，以最终下单为准哦，请尽快结算</span>
+        </div>
+
+        <div class="empty-cart" id="emptyCart">
+            <p>购物车还是空的，快去 <a href="./index.html">首页</a> 逛逛吧！</p>
+        </div>
+
+        <table id="cartTable">
+            <thead>
+                <tr>
+                    <th width="100"><input type="checkbox" id="checkAll" onclick="toggleAll()"> 全选</th>
+                    <th width="400">商品信息</th>
+                    <th>单价</th>
+                    <th>数量</th>
+                    <th>小计</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="cartBody">
+            </tbody>
+        </table>
+
+        <div class="cart-footer" id="cartFooter">
+            <div class="left">
+                <a href="javascript:;" onclick="clearCart()">清空购物车</a>
+            </div>
+            <div class="right">
+                共 <span id="totalCount" style="color:#CF4444">0</span> 件商品，
+                已选择 <span id="selCount" style="color:#CF4444; font-weight:bold;">0</span> 件，
+                合计：<span class="total-price">¥<span id="totalPrice">0.00</span></span>
+                <button class="btn-pay" onclick="alert('功能开发中...')">去结算</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="wrapper">
+            <p style="text-align:center; padding: 50px 0; color:#999">@CopyRight © 小兔鲜</p>
+        </div>
+    </div>
+
+    <script>
+        // ================= 购物车核心逻辑 =================
+
+        // 1. 渲染购物车列表
+        function renderCart() {
+            // 从仓库读数据
+            const cart = JSON.parse(localStorage.getItem('myCart')) || [];
+            const tbody = document.getElementById('cartBody');
+            const emptyDiv = document.getElementById('emptyCart');
+            const table = document.getElementById('cartTable');
+            const footer = document.getElementById('cartFooter');
+
+            // 更新顶部小图标
+            document.getElementById('cart-count').innerText = cart.length;
+
+            // 如果没数据，显示空状态
+            if (cart.length === 0) {
+                emptyDiv.style.display = 'block';
+                table.style.display = 'none';
+                footer.style.display = 'none';
+                return;
+            }
+
+            // 有数据，显示表格
+            emptyDiv.style.display = 'none';
+            table.style.display = 'table';
+            footer.style.display = 'flex';
+
+            // 生成 HTML
+            let html = '';
+            cart.forEach((item, index) => {
+                html += `
+          <tr>
+            <td><input type="checkbox" class="chk" data-id="${item.id}" ${item.checked ? 'checked' : ''} onclick="toggleItem(${item.id})"></td>
+            <td class="t-goods">
+              <img src="${item.img}" alt="">
+              <div>
+                <p>${item.name}</p>
+              </div>
+            </td>
+            <td>¥${item.price.toFixed(2)}</td>
+            <td>
+              <div class="num-box">
+                <button onclick="changeCount(${item.id}, -1)">-</button>
+                <input type="text" value="${item.count}" readonly>
+                <button onclick="changeCount(${item.id}, 1)">+</button>
+              </div>
+            </td>
+            <td style="color:#CF4444">¥${(item.price * item.count).toFixed(2)}</td>
+            <td><a href="javascript:;" onclick="delItem(${item.id})" style="color:#666">删除</a></td>
+          </tr>
+        `;
+            });
+            tbody.innerHTML = html;
+
+            // 重新计算总价
+            calcTotal();
+        }
+
+        // 2. 计算总价和总数量
+        function calcTotal() {
+            const cart = JSON.parse(localStorage.getItem('myCart')) || [];
+            let totalCount = 0; // 总件数
+            let selCount = 0;   // 选中的件数
+            let totalPrice = 0; // 总金额
+            let isAllChecked = true;
+
+            cart.forEach(item => {
+                totalCount += item.count;
+                if (item.checked) {
+                    selCount += item.count;
+                    totalPrice += item.price * item.count;
+                } else {
+                    isAllChecked = false;
+                }
+            });
+
+            // 更新页面显示
+            document.getElementById('totalCount').innerText = totalCount;
+            document.getElementById('selCount').innerText = selCount;
+            document.getElementById('totalPrice').innerText = totalPrice.toFixed(2);
+
+            // 更新全选框状态
+            document.getElementById('checkAll').checked = (cart.length > 0 && isAllChecked);
+        }
+
+        // 3. 勾选/取消勾选单个商品
+        function toggleItem(id) {
+            let cart = JSON.parse(localStorage.getItem('myCart')) || [];
+            const item = cart.find(v => v.id === id);
+            if (item) {
+                item.checked = !item.checked;
+                localStorage.setItem('myCart', JSON.stringify(cart));
+                renderCart(); // 重新渲染
+            }
+        }
+
+        // 4. 全选/反选
+        function toggleAll() {
+            let cart = JSON.parse(localStorage.getItem('myCart')) || [];
+            const checkAll = document.getElementById('checkAll');
+            cart.forEach(item => item.checked = checkAll.checked);
+            localStorage.setItem('myCart', JSON.stringify(cart));
+            renderCart();
+        }
+
+        // 5. 修改数量
+        function changeCount(id, step) {
+            let cart = JSON.parse(localStorage.getItem('myCart')) || [];
+            const item = cart.find(v => v.id === id);
+            if (item) {
+                item.count += step;
+                if (item.count < 1) item.count = 1; // 最小为1
+                localStorage.setItem('myCart', JSON.stringify(cart));
+                renderCart();
+            }
+        }
+
+        // 6. 删除单个
+        function delItem(id) {
+            if (!confirm('确定要删除这个商品吗？')) return;
+            let cart = JSON.parse(localStorage.getItem('myCart')) || [];
+            // 过滤掉当前ID的商品
+            cart = cart.filter(v => v.id !== id);
+            localStorage.setItem('myCart', JSON.stringify(cart));
+            renderCart();
+        }
+
+        // 7. 清空购物车
+        function clearCart() {
+            if (!confirm('确定清空所有商品吗？')) return;
+            localStorage.removeItem('myCart');
+            renderCart();
+        }
+
+        // 初始化：页面一打开就渲染
+        renderCart();
+    </script>
+</body>
+
+</html>

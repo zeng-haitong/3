@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小兔鲜儿 - 商品详情</title>
+    <link rel="stylesheet" href="./iconfont/iconfont.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/detail.css">
+</head>
+
+<body>
+    <div class="shortcut">
+        <div class="wrapper">
+            <ul>
+                <li><a href="./login.html">请先登录</a></li>
+                <li><a href="./register.html">免费注册</a></li>
+                <li><a href="#">我的订单</a></li>
+                <li><a href="./cart.html"><span class="iconfont icon-cart-full"></span> 购物车</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="header wrapper">
+        <div class="logo">
+            <h1><a href="./index.html">小兔鲜儿</a></h1>
+        </div>
+        <div class="nav">
+            <ul>
+                <li><a href="./index.html">首页</a></li>
+                <li><a href="#">生鲜</a></li>
+                <li><a href="#">美食</a></li>
+            </ul>
+        </div>
+        <div class="search"><input type="text" placeholder="搜一搜"></div>
+        <div class="cart">
+            <a href="./cart.html">
+                <img src="./uploads/购物 车1.png" alt="购物车" class="cart-icon">
+                <i id="cart-count">0</i>
+            </a>
+        </div>
+    </div>
+
+    <div class="bread-crumb wrapper">
+        <a href="./index.html">首页</a> > <span id="crumb-category">详情</span> > <span id="crumb-name">...</span>
+    </div>
+
+    <div class="goods-info wrapper">
+        <div class="media">
+            <div class="middle"><img src="" alt="" id="mainImg"></div>
+            <ul class="small" id="thumbList"></ul>
+        </div>
+        <div class="spec">
+            <h3 class="g-name" id="goodsName">加载中...</h3>
+            <p class="g-desc" id="goodsDesc"></p>
+            <div class="g-price"><span id="goodsPrice"></span> <del id="goodsOldPrice"></del></div>
+
+            <div class="num-box">
+                <span class="label">数量</span>
+                <div class="my-input-number">
+                    <button onclick="changeNum(-1)">-</button>
+                    <input type="text" value="1" id="buyNum" readonly>
+                    <button onclick="changeNum(1)">+</button>
+                </div>
+            </div>
+            <div class="btn-group">
+                <button class="btn-add" onclick="addToCart()">加入购物车</button>
+                <button class="btn-buy">立即购买</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="wrapper">
+            <p>@CopyRight © 小兔鲜</p>
+        </div>
+    </div>
+
+    <script>
+        // ================= 全能版数据逻辑 =================
+        const params = new URLSearchParams(window.location.search);
+        const id = parseInt(params.get('id')) || 1;
+
+        // 1. 定义4个特定商品 (ID 1-4)
+        const specificGoods = {
+            1: { name: "KN95级莫兰迪色防护口罩", price: "79.00", img: "./uploads/新鲜好物1.png" },
+            2: { name: "紫檀外独板三层普洱茶盒", price: "566.00", img: "./uploads/新鲜好物2.png" },
+            3: { name: "法拉蒙高颜值记事本", price: "58.00", img: "./uploads/新鲜好物3.png" },
+            4: { name: "科技布布艺沙发", price: "3579.00", img: "./uploads/新鲜好物4.png" }
+        };
+
+        let data = {};
+
+        // ★★★ 核心匹配逻辑 (覆盖所有板块) ★★★
+        if (specificGoods[id]) {
+            // --- 新鲜好物 (1-4) ---
+            data = specificGoods[id];
+            data.desc = "【现货速发】品质保证，七天无理由退换。";
+
+        } else if (id >= 5 && id <= 8) {
+            // --- 人气推荐 (5-8) ---
+            const names = ["特惠推荐礼包", "爆款好物", "节日礼品盒", "鲜花园艺套装"];
+            let index = id - 5;
+            data = {
+                name: names[index],
+                price: "99.00",
+                img: `./uploads/人气推荐${index + 1}.png`,
+                desc: "人气爆款，不容错过，限时特惠中。"
+            };
+
+        } else if (id >= 9 && id <= 13) {
+            // --- 热门品牌 (9-13) ---
+            data = {
+                name: "品牌官方旗舰店直营商品",
+                price: "299.00",
+                img: `./uploads/热门品牌${id - 8}.png`,
+                desc: "国际经典，品质认证，官方正品保障。"
+            };
+
+        } else if (id >= 14 && id <= 21) {
+            // --- 生鲜 (14-21) ---
+            const names = ["手抓饼", "红糖馒头", "小圆饼", "奶油面包", "摩提大福", "蜂蜜柚子茶", "巧克力礼盒", "抹茶蛋糕"];
+            const imgs = ["手抓饼", "馒头", "小圆饼", "面包", "大福", "蜂蜜", "巧克力", "抹茶蛋糕"];
+            let index = id - 14;
+            data = {
+                name: "精选生鲜 - " + names[index],
+                price: (id * 5 + 10).toFixed(2),
+                img: `./uploads/${imgs[index]}.png`,
+                desc: "新鲜采摘，冷链运输，保留最原本的鲜味。"
+            };
+
+        } else if (id >= 22 && id <= 29) {
+            // --- 居家 (22-29) ---
+            const names = ["房间的彩虹", "粉色玩偶", "水培植物", "可爱发卡", "艺术花瓶", "简易书桌", "懒人花盆", "竹席枕套"];
+            const imgs = ["房间的彩虹", "粉色玩偶", "水培植物", "发卡", "花瓶", "简易书桌", "懒人花盆", "竹席枕套"];
+            let index = id - 22;
+            data = {
+                name: "居家好物 - " + names[index],
+                price: (id * 3 + 20).toFixed(2),
+                img: `./uploads/${imgs[index]}.png`,
+                desc: "装点你的生活，提升居家幸福感。"
+            };
+
+        } else if (id >= 30 && id <= 37) {
+            // --- 服装 (30-37) ---
+            const names = ["复古老爹鞋", "Jessyline短袖", "纯棉打底衫", "文艺棉袜", "清新碎花裙", "真皮皮带", "经典帆布鞋", "休闲长裤"];
+            const imgs = ["鞋", "jessyline", "打底衫", "文艺袜子", "裙子", "皮带", "帆布鞋", "裤子"];
+            let index = id - 30;
+            data = {
+                name: "潮流服饰 - " + names[index],
+                price: (id * 10 + 50).toFixed(2),
+                img: `./uploads/${imgs[index]}.png`,
+                desc: "舒适面料，时尚剪裁，穿出你的风格。"
+            };
+
+        } else if (id >= 38 && id <= 45) {
+            // --- ★新增★ 餐厨 (38-45) ---
+            const names = ["茶具套装", "木质收纳盘", "电动打奶泡机", "家用保温瓶", "精致西餐具", "烘焙蛋糕模具", "北欧风餐盘", "透明玻璃水杯"];
+            const imgs = ["茶具", "收纳盘", "奶泡", "保温瓶", "餐具", "蛋糕模具", "餐盘", "水杯"];
+            let index = id - 38;
+            data = {
+                name: "餐厨严选 - " + names[index],
+                price: (id * 4 + 15).toFixed(2),
+                img: `./uploads/${imgs[index]}.png`,
+                desc: "把控细节，让烹饪和用餐成为享受。"
+            };
+
+        } else if (id >= 46 && id <= 48) {
+            // --- ★新增★ 最新专题 (46-48) ---
+            data = {
+                name: "小兔鲜儿 - 官方精选专题活动",
+                price: "0.00", // 专题通常不直接卖
+                img: `./uploads/最新专题${id - 45}.png`,
+                desc: "查看专题详情，领取优惠券，参与限时活动。"
+            };
+
+        } else if (id >= 101 && id <= 103) {
+            // --- ★新增★ 轮播图 (101-103) ---
+            const names = ["生鲜果蔬大促", "居家生活新风尚", "时尚穿搭季"];
+            let index = id - 101;
+            data = {
+                name: names[index] + " - 专题活动页",
+                price: "99.00",
+                img: `./uploads/banner${index + 1}.png`,
+                desc: "点击购买活动商品，全场满200减20！"
+            };
+
+        } else {
+            // 兜底
+            data = {
+                name: "热门商品",
+                price: "99.00",
+                img: "./uploads/人气推荐1.png",
+                desc: "好物推荐"
+            };
+        }
+
+        // 渲染页面
+        document.getElementById('mainImg').src = data.img;
+        document.getElementById('goodsName').innerText = data.name;
+        document.getElementById('goodsDesc').innerText = data.desc;
+        document.getElementById('goodsPrice').innerText = '¥' + data.price;
+        document.getElementById('goodsOldPrice').innerText = '¥' + (parseFloat(data.price) * 1.2).toFixed(2);
+        document.getElementById('crumb-name').innerText = data.name;
+
+        // 动态生成小图
+        const thumbList = document.getElementById('thumbList');
+        thumbList.innerHTML = `
+        <li class="active"><img src="${data.img}"></li>
+        <li><img src="${data.img}" style="filter:sepia(0.5)"></li>
+        <li><img src="${data.img}" style="filter:grayscale(1)"></li>
+    `;
+
+        // 交互逻辑
+        const list = document.querySelectorAll('#thumbList li');
+        const mainImg = document.getElementById('mainImg');
+        list.forEach(li => {
+            li.addEventListener('mouseenter', function () {
+                document.querySelector('#thumbList .active').classList.remove('active');
+                this.classList.add('active');
+                mainImg.src = this.querySelector('img').src;
+            })
+        });
+
+        const numInput = document.getElementById('buyNum');
+        function changeNum(step) {
+            let res = parseInt(numInput.value) + step;
+            if (res < 1) res = 1;
+            numInput.value = res;
+        }
+
+        function addToCart() {
+            let cart = JSON.parse(localStorage.getItem('myCart')) || [];
+            let existingItem = cart.find(item => item.id === id);
+            if (existingItem) {
+                existingItem.count += parseInt(numInput.value);
+            } else {
+                cart.push({
+                    id: id,
+                    name: data.name,
+                    price: parseFloat(data.price),
+                    img: data.img,
+                    count: parseInt(numInput.value),
+                    checked: true
+                });
+            }
+            localStorage.setItem('myCart', JSON.stringify(cart));
+            document.getElementById('cart-count').innerText = cart.length;
+            alert(`已将 ${numInput.value} 件【${data.name}】加入购物车！`);
+        }
+
+        let cart = JSON.parse(localStorage.getItem('myCart')) || [];
+        document.getElementById('cart-count').innerText = cart.length;
+    </script>
+</body>
+
+</html>

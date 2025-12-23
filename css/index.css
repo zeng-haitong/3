@@ -1,0 +1,533 @@
+/* ================= 1. 公共样式 & 布局 ================= */
+.wrapper {
+  margin: 0 auto;
+  width: 1240px;
+}
+
+/* ================= 2. 快捷导航 (Shortcut) ================= */
+.shortcut {
+  height: 52px;
+  background-color: #333;
+}
+.shortcut .wrapper {
+  display: flex;
+  justify-content: flex-end;
+  height: 52px;
+}
+.shortcut ul {
+  height: 52px;
+  display: flex;
+}
+.shortcut li {
+  margin-top: 20px;
+  height: 14px;
+  padding: 0 15px;
+  border-right: 0.5px solid #999;
+}
+.shortcut li:last-child {
+  border: none;
+}
+.shortcut li a {
+  display: block;
+  color: #fff;
+  height: 14px;
+  line-height: 14px;
+  font-size: 14px;
+}
+.shortcut li a:hover {
+  color: #5EB69C;
+}
+.shortcut li span {
+  vertical-align: middle;
+}
+
+/* ================= 3. 头部区域 (Header) ================= */
+.header {
+  display: flex;
+  height: 88px;
+  margin-top: 22px;
+  margin-bottom: 22px;
+}
+
+/* Logo */
+.header .logo {
+  width: 200px;
+  margin-right: 40px;
+  background-image: url(../images/logo.png); /* 请确保图片路径正确 */
+}
+.header h1 a {
+  display: block;
+  width: 200px;
+  height: 88px;
+  font-size: 0;
+}
+
+/* 导航 (Nav) */
+.nav {
+  margin-top: 33px;
+  margin-right: 28px;
+}
+.nav ul {
+  display: flex;
+}
+.nav li {
+  margin-right: 48px;
+}
+.nav a {
+  display: block;
+  padding-bottom: 8px;
+}
+.nav a:hover {
+  border-bottom: 2px solid #5EB69C;
+  color: #5EB69C;
+}
+
+/* 搜索 (Search) */
+.search {
+  display: flex;
+  margin-top: 33px;
+  margin-right: 27px;
+  width: 170px;
+  height: 34px;
+  border-bottom: 2px solid #F4F4F4;
+  padding-bottom: 4px;
+}
+.search .iconfont {
+  font-size: 18px;
+  color: #ccc;
+  margin-right: 8px;
+}
+.search input {
+  width: 0;
+  flex: 1;
+}
+.search input::placeholder {
+  color: #363434;
+  height: 22px;
+  font-size: 16px;
+}
+
+/* 购物车 (Cart) */
+.cart {
+  position: relative;
+  margin-top: 36px;
+}
+.cart a {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+}
+.cart .cart-icon {
+  width: 25px;
+  height: auto;
+  display: block;
+}
+.cart i {
+  position: absolute;
+  font-size: 12px;
+  line-height: 15px;
+  color: #fff;
+  top: -11px;
+  left: 18px;
+  padding: 0 7px;
+  background-color: #E26237;
+  border-radius: 8px;
+}
+
+/* ================= 4. 轮播图区域 (Banner) - 核心修改 ================= */
+.banner {
+  background-color: #f5f5f5;
+}
+
+.banner .wrapper {
+  position: relative;
+  height: 500px; /* 固定高度，防止塌陷 */
+  overflow: hidden; /* 核心：超出部分隐藏，只显示当前的图片 */
+}
+
+/* 侧边导航栏 (Subnav) - 悬浮在图片之上 */
+.subnav {
+  position: absolute; /* 绝对定位 */
+  left: 0;
+  top: 0;
+  width: 250px;
+  height: 500px;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000; /* 层级最高，压在图片上面 */
+}
+.subnav li {
+  display: flex;
+  height: 50px;
+  padding: 14px 12px 14px 29px;
+  position: relative;
+}
+.subnav a,
+.subnav .iconfont {
+  color: #fff;
+  font-size: 14px;
+  line-height: 22px;
+}
+.subnav a {
+  margin-right: 5px;
+}
+.subnav h4 {
+  font-weight: 500;
+  font-size: 16px;
+  margin-right: 14px;
+}
+/* 侧导航右侧箭头 */
+.subnav .iconfont {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background: url("../uploads/右滑.png") no-repeat center/contain;
+  font-size: 0;
+  color: transparent;
+}
+
+/* 轮播图列表 (Pic) - 长胶卷模式 */
+.pic {
+  display: flex; /* 让 li 横向排列 */
+  width: 100%;   /* 宽度占满父容器 */
+  height: 100%;
+  position: relative;
+  left: 0;
+  /* 平滑过渡动画 */
+  transition: transform 0.5s ease-in-out; 
+}
+
+.pic li {
+  width: 100%;     /* 每张图占满显示区域 */
+  min-width: 100%; /* 防止被压缩 */
+  height: 100%;
+}
+
+.pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 保证图片填满不变形 */
+}
+
+/* 轮播圆点 (Dots) */
+.banner ol {
+  display: flex;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+}
+.banner ol li {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-left: 12px;
+  background-color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+/* 激活状态的圆点 */
+.banner ol li.active {
+  background-color: #fff;
+  transform: scale(1.2); /* 选中时稍微变大 */
+}
+
+/* ================= 5. 通用标题样式 (Title) ================= */
+.goods .title, .brand .title, .fresh .title {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 102px;
+  margin-top: 10px;
+}
+.title h3 {
+  font-size: 30px;
+  line-height: 42px;
+  margin-right: 35px;
+}
+.title p {
+  color: #A1A1A1;
+  position: relative;
+  bottom: -8px;
+}
+
+/* 查看全部 (All) - 精致版 */
+.title .all {
+  position: absolute;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 14px;
+  color: #888;
+  text-decoration: none;
+  cursor: pointer;
+  line-height: 1;
+  transition: all 0.3s ease;
+}
+/* 箭头样式 */
+.title .all .iconfont {
+  background: none !important;
+  font-size: 0;
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-top: 1px solid #888;
+  border-right: 1px solid #888;
+  margin: 0;
+  transform: rotate(45deg);
+  margin-bottom: 1px;
+  transition: all 0.3s ease;
+}
+/* 悬停效果 */
+.title .all:hover {
+  background: linear-gradient(90deg, #a855f7, #3b82f6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 600;
+}
+.title .all:hover .iconfont {
+  border-color: #3b82f6;
+  transform: rotate(45deg) translateX(3px) translateY(-3px);
+}
+
+/* ================= 6. 各板块内容 (Goods, Brand, Fresh, Topic) ================= */
+
+/* 新鲜好物 & 人气推荐 */
+.goods {
+  background-color: #fff;
+}
+.goods ul {
+  display: flex;
+  justify-content: space-between;
+}
+.goods ul li {
+  width: 304px;
+}
+.goods ul img {
+  height: 304px;
+}
+.goods .price {
+  height: 100px;
+}
+.bd .price {
+  background-color: #EEF9F4;
+}
+.goods .price p {
+  text-align: center;
+  font-size: 22px;
+  color: #AA2113;
+}
+.goods .price a {
+  display: block;
+  font-size: 20px;
+  padding: 17px 0 4px;
+  color: #333; /* 修正链接颜色 */
+}
+.recommend .price p {
+  font-size: 16px;
+  color: #A1A1A1;
+  padding-bottom: 6px;
+}
+.recommend {
+  margin-bottom: 60px;
+}
+
+/* 热门品牌 */
+.brand {
+  height: 468px;
+  background-color: #f1f1f1;
+}
+.brand .title {
+  height: 122px;
+}
+.title .jiantou {
+  position: absolute;
+  right: 0;
+  bottom: 15px;
+}
+.jiantou .left, .jiantou .right {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: #e4e4e4;
+  line-height: 20px;
+  text-align: center;
+  background-image: url("../uploads/left.png"); /* 需确认图片存在 */
+  margin-right: 12px;
+  cursor: pointer;
+}
+.jiantou .right {
+  transform: rotate(180deg);
+}
+.jiantou span:hover {
+  background-color: #5EB69C;
+}
+.brand ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 生鲜 */
+.fresh {
+  padding-top: 20px;
+}
+.fresh .title {
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+.fresh .title ul {
+  display: flex;
+  position: absolute;
+  right: 134px;
+}
+.fresh .title ul a {
+  display: block;
+  height: 22px;
+  line-height: 22px;
+  color: #333;
+  padding: 0 7px;
+  margin-right: 6px;
+}
+.fresh .title ul a:hover {
+  background-color: #5EB69C;
+  color: #fff;
+}
+.fresh .content {
+  display: flex;
+}
+.fresh .content .left {
+  width: 248px;
+  height: 610px;
+  margin-right: 24px;
+}
+.fresh .content .right ul {
+  display: flex;
+  width: 968px;
+  flex-wrap: wrap;
+}
+.fresh .content .right li {
+  width: 242px;
+  height: 305px;
+  padding: 0 26px;
+  /* 可以加个边框或背景让商品块更明显 */
+}
+.fresh .content .right img {
+  width: 190px;
+  height: 171px;
+  margin: 14.5px 0;
+}
+.fresh .content .right a {
+  display: block;
+  width: 192px;
+  line-height: 19px;
+  color: #333;
+}
+.fresh .content .right span {
+  font-size: 22px;
+  line-height: 45px;
+  color: #AF2F22;
+}
+
+/* 最新专题 */
+.topic {
+  padding-top: 70px;
+}
+.topic .title {
+  margin: 30px 0;
+}
+.topic ul {
+  height: 395px;
+  display: flex;
+  justify-content: space-between; /* 均匀分布 */
+}
+.topic li img {
+  display: block;
+  width: 405px;
+  height: 288px;
+  margin-bottom: 23px;
+}
+.topic div {
+  position: relative;
+}
+.topic div span {
+  margin-left: 15px;
+  margin-right: 5px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #999;
+}
+
+/* ================= 7. 底部 (Footer) ================= */
+.footer {
+  height: 582px;
+  background-color: #f5f5f5;
+  margin-top: 60px;
+}
+/* 服务 */
+.service {
+  height: 179px;
+  border-bottom: 1px solid #e8e8e8;
+}
+.service ul {
+  display: flex;
+  height: 179px;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.service li {
+  height: 58px;
+  background: url(../images/sprite.png) no-repeat; /* 确保精灵图路径正确 */
+  padding-left: 78px;
+}
+.service li:nth-child(2) { background-position: 0 -58px; }
+.service li:nth-child(3) { background-position: 0 -116px; }
+.service li:nth-child(4) { background-position: 0 -174px; }
+.service h5 {
+  line-height: 58px;
+  font-size: 28px;
+  color: #333;
+}
+/* 帮助中心 */
+.help {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 58px;
+  height: 302px;
+}
+.help dt {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #333;
+}
+.help dd a {
+  line-height: 32px;
+  color: #969696;
+}
+.help .right ul {
+  display: flex;
+  justify-content: space-between;
+  width: 295px;
+}
+.help .right img {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 8px;
+}
+.help .right p {
+  text-align: center;
+  color: #969696;
+}
+/* 版权 */
+.copyright {
+  text-align: center;
+}
+.copyright p, .copyright p a {
+  color: #A1A1A1;
+}
+.copyright p {
+  margin-bottom: 10px;
+}

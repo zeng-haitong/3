@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="小兔鲜儿官网，致力于打造全球最大的食品、生鲜电商购物平台。">
+  <meta name="keywords" content="小兔鲜儿,食品,生鲜,服装,家电,电商,购物">
+  <title>小兔鲜儿-新鲜、惠民、快捷！</title>
+
+  <link rel="stylesheet" href="./iconfont/iconfont.css">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+
+  <div class="shortcut">
+    <div class="wrapper">
+      <ul>
+        <li><a href="./login.html">请先登录</a></li>
+        <li><a href="./register.html">免费注册</a></li>
+        <li><a href="#">我的订单</a></li>
+        <li><a href="#">会员中心</a></li>
+        <li><a href="#">帮助中心</a></li>
+        <li><a href="#">在线客服</a></li>
+        <li><a href="#"><span class="iconfont icon-mobile-phone"></span> 手机版</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="header wrapper">
+    <div class="logo">
+      <h1><a href="./index.html">小兔鲜儿</a></h1>
+    </div>
+    <div class="nav">
+      <ul>
+        <li><a href="./index.html">首页</a></li>
+        <li><a href="#">生鲜</a></li>
+        <li><a href="#">美食</a></li>
+        <li><a href="#">餐厨</a></li>
+        <li><a href="#">电器</a></li>
+        <li><a href="#">家居</a></li>
+        <li><a href="#">洗护</a></li>
+        <li><a href="#">孕婴</a></li>
+        <li><a href="#">服装</a></li>
+      </ul>
+    </div>
+    <div class="search">
+      <span class="iconfont icon-search"></span>
+      <input type="text" placeholder="25216950334曾海桐">
+    </div>
+    <div class="cart">
+      <a href="./cart.html">
+        <img src="./uploads/购物 车1.png" alt="购物车" class="cart-icon">
+        <i id="cart-count">0</i>
+      </a>
+    </div>
+  </div>
+
+  <div class="banner">
+    <div class="wrapper" id="banner-wrapper">
+
+      <ul class="subnav">
+        <li><a href="#">
+            <h4>生鲜果蔬</h4>
+          </a><a href="#">水果</a><a href="#">蔬菜</a><span class="iconfont icon-arrow-right-bold"></span></li>
+        <li><a href="#">
+            <h4>美食推荐</h4>
+          </a><a href="#">面包</a><a href="#">干果</a><span class="iconfont icon-arrow-right-bold"></span></li>
+        <li><a href="#">
+            <h4>数码电子</h4>
+          </a><a href="#">手机</a><a href="#">电脑</a><span class="iconfont icon-arrow-right-bold"></span></li>
+        <li><a href="#">
+            <h4>家庭电器</h4>
+          </a><a href="#">电视</a><a href="#">冰箱</a><span class="iconfont icon-arrow-right-bold"></span></li>
+        <li><a href="#">
+            <h4>厨房用品</h4>
+          </a><a href="#">厨房电器</a><a href="#">餐具</a><span class="iconfont icon-arrow-right-bold"></span></li>
+        <li><a href="#">
+            <h4>居家生活</h4>
+          </a><a href="#">床品</a><a href="#">四件套</a><a href="#">被枕</a><span
+            class="iconfont icon-arrow-right-bold"></span></li>
+        <li><a href="#">
+            <h4>洗护美妆</h4>
+          </a><a href="#">洗发</a><a href="#">洁面</a><a href="#">美妆</a><span class="iconfont icon-arrow-right-bold"></span>
+        </li>
+        <li><a href="#">
+            <h4>孕婴用品</h4>
+          </a><a href="#">奶粉</a><a href="#">玩具</a><a href="#">服装</a><span class="iconfont icon-arrow-right-bold"></span>
+        </li>
+        <li><a href="#">
+            <h4>服饰穿搭</h4>
+          </a><a href="#">女装</a><a href="#">男装</a><span class="iconfont icon-arrow-right-bold"></span></li>
+        <li><a href="#">
+            <h4>日用杂货</h4>
+          </a><a href="#">户外</a><a href="#">图书</a><span class="iconfont icon-arrow-right-bold"></span></li>
+      </ul>
+
+      <ul class="pic" id="carousel-list">
+        <li><a href="./detail.html?id=101"><img src="./uploads/banner1.png" alt="Banner1"></a></li>
+        <li><a href="./detail.html?id=102"><img src="./uploads/banner2.png" alt="Banner2"></a></li>
+        <li><a href="./detail.html?id=103"><img src="./uploads/banner3.png" alt="Banner3"></a></li>
+      </ul>
+
+      <ol id="carousel-dots">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="goods wrapper">
+    <div class="title">
+      <h3>新鲜好物</h3>
+      <p>新鲜出炉 品质靠谱</p>
+      <a class="all" href="#">查看全部 <span class="iconfont icon-arrow-right-bold"></span></a>
+    </div>
+    <ul class="bd">
+      <li>
+        <a href="./detail.html?id=1"><img src="./uploads/新鲜好物1.png" alt=""></a>
+        <div class="price">
+          <p><a href="./detail.html?id=1">KN95级莫兰迪色防护口罩</a></p>
+          <span class="cost">￥79</span>
+        </div>
+      </li>
+      <li>
+        <a href="./detail.html?id=2"><img src="./uploads/新鲜好物2.png" alt=""></a>
+        <div class="price">
+          <p><a href="./detail.html?id=2">紫檀外独板三层普洱茶盒</a></p>
+          <span class="cost">￥566</span>
+        </div>
+      </li>
+      <li>
+        <a href="./detail.html?id=3"><img src="./uploads/新鲜好物3.png" alt=""></a>
+        <div class="price">
+          <p><a href="./detail.html?id=3">法拉蒙高颜值记事本可定制</a></p>
+          <span class="cost">￥58</span>
+        </div>
+      </li>
+      <li>
+        <a href="./detail.html?id=4"><img src="./uploads/新鲜好物4.png" alt=""></a>
+        <div class="price">
+          <p><a href="./detail.html?id=4">科技布布艺沙发</a></p>
+          <span class="cost">￥3579</span>
+        </div>
+      </li>
+    </ul>
+
+    <div class="title">
+      <h3>人气推荐</h3>
+      <p>人气爆款 不容错过</p>
+      <a class="all" href="#">查看全部 <span class="iconfont icon-arrow-right-bold"></span></a>
+    </div>
+    <ul class="recommend">
+      <li>
+        <a href="./detail.html?id=5"><img src="./uploads/人气推荐1.png" alt=""></a>
+        <div class="price">
+          <p><a href="./detail.html?id=5">特惠推荐</a></p>
+          <p>我猜得到 你的需要</p>
+        </div>
+      </li>
+      <li>
+        <a href="./detail.html?id=6"><img src="./uploads/人气推荐2.png" alt=""></a>
+        <div class="price">
+          <p><a href="./detail.html?id=6">爆款推荐</a></p>
+          <p>人气好物推荐</p>
+        </div>
+      </li>
+      <li>
+        <a href="./detail.html?id=7"><img src="./uploads/人气推荐3.png" alt=""></a>
+        <div class="price">
+          <p><a href="./detail.html?id=7">节日礼品一站买全</a></p>
+          <p>编辑尽心整理推荐</p>
+        </div>
+      </li>
+      <li>
+        <a href="./detail.html?id=8"><img src="./uploads/人气推荐4.png" alt=""></a>
+        <div class="price">
+          <p><a href="./detail.html?id=8">鲜花园艺</a></p>
+          <p>给生活增加仪式感</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="brand">
+    <div class="wrapper">
+      <div class="title">
+        <h3>热门品牌</h3>
+        <p>国际经典 品质认证</p>
+        <div class="jiantou">
+          <span class="left"><i class="iconfont icon-arrow-left-bold"></i></span>
+          <span class="right"><i class="iconfont icon-arrow-right-bold"></i></span>
+        </div>
+      </div>
+      <ul>
+        <li><a href="./detail.html?id=9"><img src="./uploads/热门品牌1.png" alt=""></a></li>
+        <li><a href="./detail.html?id=10"><img src="./uploads/热门品牌2.png" alt=""></a></li>
+        <li><a href="./detail.html?id=11"><img src="./uploads/热门品牌3.png" alt=""></a></li>
+        <li><a href="./detail.html?id=12"><img src="./uploads/热门品牌4.png" alt=""></a></li>
+        <li><a href="./detail.html?id=13"><img src="./uploads/热门品牌5.png" alt=""></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="fresh wrapper">
+    <div class="title">
+      <h3>生鲜</h3>
+      <ul>
+        <li><a href="#">热门</a></li>
+        <li><a href="#">蔬菜</a></li>
+        <li><a href="#">肉禽蛋</a></li>
+        <li><a href="#">水果</a></li>
+        <li><a href="#">海鲜</a></li>
+        <li><a href="#">零食</a></li>
+        <li><a href="#">饮料</a></li>
+      </ul>
+      <a class="all" href="#">查看全部 <span class="iconfont icon-arrow-right-bold"></span></a>
+    </div>
+    <div class="content">
+      <div class="left">
+        <a href="./detail.html?id=14"><img src="./uploads/商品介绍卡片生鲜.png" alt=""></a>
+      </div>
+      <div class="right">
+        <ul>
+          <li><a href="./detail.html?id=14"><img src="./uploads/手抓饼.png" alt=""></a>
+            <div class="info">
+              <p>双味千层手抓饼</p><span>￥89.99</span>
+            </div>
+          </li>
+          <li><a href="./detail.html?id=15"><img src="./uploads/馒头.png" alt=""></a>
+            <div class="info">
+              <p>云南甘蔗慢熬红糖馒头</p><span>￥9.99</span>
+            </div>
+          </li>
+          <li><a href="./detail.html?id=16"><img src="./uploads/小圆饼.png" alt=""></a>
+            <div class="info">
+              <p>日式风味小圆饼 海盐味</p><span>￥588.00</span>
+            </div>
+          </li>
+          <li><a href="./detail.html?id=17"><img src="./uploads/面包.png" alt=""></a>
+            <div class="info">
+              <p>全麦奶油浓香小面包</p><span>￥69.00</span>
+            </div>
+          </li>
+          <li><a href="./detail.html?id=18"><img src="./uploads/大福.png" alt=""></a>
+            <div class="info">
+              <p>秘制外皮五福摩提大福</p><span>￥39.99</span>
+            </div>
+          </li>
+          <li><a href="./detail.html?id=19"><img src="./uploads/蜂蜜.png" alt=""></a>
+            <div class="info">
+              <p>韩国蜂蜜柚子茶</p><span>￥89.99</span>
+            </div>
+          </li>
+          <li><a href="./detail.html?id=20"><img src="./uploads/巧克力.png" alt=""></a>
+            <div class="info">
+              <p>浓情比利时巧克力礼盒</p><span>￥120.00</span>
+            </div>
+          </li>
+          <li><a href="./detail.html?id=21"><img src="./uploads/抹茶蛋糕.png" alt=""></a>
+            <div class="info">
+              <p>抹茶奶油小蛋糕礼盒</p><span>￥60.00</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="fresh wrapper">
+    <div class="title">
+      <h3>居家</h3>
+      <ul>
+        <li><a href="#">热门</a></li>
+        <li><a href="#">鲜花</a></li>
+        <li><a href="#">家纺</a></li>
+        <li><a href="#">创意</a></li>
+        <li><a href="#">日用</a></li>
+      </ul>
+      <a class="all" href="#">查看全部 <span class="iconfont icon-arrow-right-bold"></span></a>
+    </div>
+    <div class="content">
+      <div class="left">
+        <a href="./detail.html?id=22"><img src="./uploads/商品介绍卡片-居家.png" alt=""></a>
+      </div>
+      <div class="right">
+        <ul>
+          <li><a href="./detail.html?id=22"><img src="./uploads/房间的彩虹.png" alt=""></a>
+            <div class="info">
+              <p>房间的彩虹</p><span>￥59.00</span>
+            </div>
+          </li>
+          <li><a href="./detail.html?id=23"><img src="./uploads/粉色玩偶.png" alt=""></a>
+            <div class="info">
+              <p>粉色玩偶</p><span>￥39.00</span>
+            </div>
+          </li>
+          <li><a href="./detail.html?id=24"><img src="./uploads/水培植物.png" alt=""></a>
+            <div class="info">
+              <p>水培植物</p><span>￥19.90</span>
+            </div>
+          </li>
+          <li><a href="./detail.html?id=25"><img src="./uploads/发卡.png" alt=""></a>
+            <div class="info">
+              <p>可爱发卡</p><span>￥29.90</span>
+            </div>
+          </li>
+          <li><a href="./detail.html?id=26"><img src="./uploads/花瓶.png" alt=""></a>
+            <div class="info">
+              <p>艺术花瓶</p><span>￥29.90</span>
+            </div>
+          </li>
+          <li><a href="./detail.html?id=27"><img src="./uploads/简易书桌.png" alt=""></a>
+            <div class="info">
+              <p>简易书桌</p><span>￥79.00</span>
+            </div>
+          </li>
+          <li><a href="./detail.html?id=28"><img src="./uploads/懒人花盆.png" alt=""></a>
+            <div class="info">
+              <p>懒人花盆</p><span>￥29.00</span>
+            </div>
+          </li>
+          <li><a href="./detail.html?id=29"><img src="./uploads/竹席枕套.png" alt=""></a>
+            <div class="info">
+              <p>竹席枕套</p><span>￥39.00</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="fresh wrapper">
+    <div class="title">
+      <h3>服装</h3>
+      <ul>
+        <li><a href="#">热门</a></li>
+        <li><a href="#">女装</a></li>
+        <li><a href="#">奢侈品</a></li>
+        <li><a href="#">裤装</a></li>
+        <li><a href="#">衬衫</a></li>
+        <li><a href="#">T恤</a></li>
+        <li><a href="#">内衣</a></li>
+      </ul>
+      <a class="all" href="#">查看全部 <span class="iconfont icon-arrow-right-bold"></span></a>
+    </div>
+    <div class="content">
+      <div class="left">
+        <a href="./detail.html?id=30"><img src="./uploads/商品介绍卡片-居家.png" alt=""></a>
+      </div>
+      <div class="right">
+        <ul>
+          <li><a href="./detail.html?id=30"><img src="./uploads/鞋.png" alt=""></a>
+            <div class="info">
+              <p>复古老爹鞋</p><span>￥719.00</span>
+            </div>
+          </li>
+          <li><a href="./detail.html?id=31"><img src="./uploads/jessyline.png" alt=""></a>
+            <div class="info">
+              <p>Jessyline短袖</p><span>￥699.00</span>
+            </div>
+          </li>
+          <li><a href="./detail.html?id=32"><img src="./uploads/打底衫.png" alt=""></a>
+            <div class="info">
+              <p>纯棉打底衫</p><span>￥229.00</span>
+            </div>
+          </li>
+          <li><a href="./detail.html?id=33"><img src="./uploads/文艺袜子.png" alt=""></a>
+            <div class="info">
+              <p>文艺棉袜</p><span>￥14.50</span>
+            </div>
+          </li>
+          <li><a href="./detail.html?id=34"><img src="./uploads/裙子.png" alt=""></a>
+            <div class="info">
+              <p>清新碎花裙</p><span>￥179.00</span>
+            </div>
+          </li>
+          <li><a href="./detail.html?id=35"><img src="./uploads/皮带.png" alt=""></a>
+            <div class="info">
+              <p>真皮皮带</p><span>￥565.00</span>
+            </div>
+          </li>
+          <li><a href="./detail.html?id=36"><img src="./uploads/帆布鞋.png" alt=""></a>
+            <div class="info">
+              <p>经典帆布鞋</p><span>￥99.99</span>
+            </div>
+          </li>
+          <li><a href="./detail.html?id=37"><img src="./uploads/裤子.png" alt=""></a>
+            <div class="info">
+              <p>休闲长裤</p><span>￥269.00</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="fresh wrapper">
+    <div class="title">
+      <h3>餐厨</h3>
+      <ul>
+        <li><a href="#">热门</a></li>
+        <li><a href="#">厨具</a></li>
+        <li><a href="#">水具</a></li>
+        <li><a href="#">灯具</a></li>
+        <li><a href="#">五金</a></li>
+        <li><a href="#">家装材料</a></li>
+        <li><a href="#">居家毫无</a></li>
+      </ul>
+      <a class="all" href="#">查看全部 <span class="iconfont icon-arrow-right-bold"></span></a>
+    </div>
+    <div class="content">
+      <div class="left">
+        <a href="./detail.html?id=38"><img src="./uploads/商品介绍卡片-餐厨.png" alt=""></a>
+      </div>
+      <div class="right">
+        <ul>
+          <li><a href="./detail.html?id=38"><img src="./uploads/茶具.png" alt=""></a>
+            <div class="info">
+              <p>茶具套装</p><span>￥210.00</span>
+            </div>
+          </li>
+          <li><a href="./detail.html?id=39"><img src="./uploads/收纳盘.png" alt=""></a>
+            <div class="info">
+              <p>木质收纳盘</p><span>￥32.99</span>
+            </div>
+          </li>
+          <li><a href="./detail.html?id=40"><img src="./uploads/奶泡.png" alt=""></a>
+            <div class="info">
+              <p>电动打奶泡机</p><span>￥30.00</span>
+            </div>
+          </li>
+          <li><a href="./detail.html?id=41"><img src="./uploads/保温瓶.png" alt=""></a>
+            <div class="info">
+              <p>家用保温瓶</p><span>￥69.99</span>
+            </div>
+          </li>
+          <li><a href="./detail.html?id=42"><img src="./uploads/餐具.png" alt=""></a>
+            <div class="info">
+              <p>精致西餐具</p><span>￥99.99</span>
+            </div>
+          </li>
+          <li><a href="./detail.html?id=43"><img src="./uploads/蛋糕模具.png" alt=""></a>
+            <div class="info">
+              <p>烘焙蛋糕模具</p><span>￥35.00</span>
+            </div>
+          </li>
+          <li><a href="./detail.html?id=44"><img src="./uploads/餐盘.png" alt=""></a>
+            <div class="info">
+              <p>北欧风餐盘</p><span>￥12.99</span>
+            </div>
+          </li>
+          <li><a href="./detail.html?id=45"><img src="./uploads/水杯.png" alt=""></a>
+            <div class="info">
+              <p>透明玻璃水杯</p><span>￥56.99</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic wrapper">
+    <div class="title">
+      <h3>最新专题</h3>
+      <a class="all" href="#">查看全部 <span class="iconfont icon-arrow-right-bold"></span></a>
+    </div>
+    <ul>
+      <li>
+        <a href="./detail.html?id=46"><img src="./uploads/最新专题1.png" alt=""></a>
+        <div class="meta">
+          <span><i class="iconfont icon-fabulous"></i> 1220</span>
+          <span><i class="iconfont icon-browse"></i> 1800</span>
+          <span><i class="iconfont icon-comment"></i> 246</span>
+        </div>
+      </li>
+      <li>
+        <a href="./detail.html?id=47"><img src="./uploads/最新专题2.png" alt=""></a>
+        <div class="meta">
+          <span><i class="iconfont icon-fabulous"></i> 1220</span>
+          <span><i class="iconfont icon-browse"></i> 1800</span>
+          <span><i class="iconfont icon-comment"></i> 246</span>
+        </div>
+      </li>
+      <li>
+        <a href="./detail.html?id=48"><img src="./uploads/最新专题3.png" alt=""></a>
+        <div class="meta">
+          <span><i class="iconfont icon-fabulous"></i> 1220</span>
+          <span><i class="iconfont icon-browse"></i> 1800</span>
+          <span><i class="iconfont icon-comment"></i> 246</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <div class="wrapper">
+      <div class="service">
+        <ul>
+          <li>
+            <h5>价格亲民</h5>
+          </li>
+          <li>
+            <h5>物流快捷</h5>
+          </li>
+          <li>
+            <h5>品质新鲜</h5>
+          </li>
+          <li>
+            <h5>售后无忧</h5>
+          </li>
+        </ul>
+      </div>
+      <div class="help">
+        <dl>
+          <dt>购物指南</dt>
+          <dd><a href="#">购物流程</a></dd>
+          <dd><a href="#">支付方式</a></dd>
+          <dd><a href="#">售后规则</a></dd>
+        </dl>
+        <dl>
+          <dt>配送方式</dt>
+          <dd><a href="#">配送运费</a></dd>
+          <dd><a href="#">配送范围</a></dd>
+          <dd><a href="#">配送时间</a></dd>
+        </dl>
+        <dl>
+          <dt>关于我们</dt>
+          <dd><a href="#">平台规则</a></dd>
+          <dd><a href="#">联系我们</a></dd>
+          <dd><a href="#">问题反馈</a></dd>
+        </dl>
+        <dl>
+          <dt>售后服务</dt>
+          <dd><a href="#">售后政策</a></dd>
+          <dd><a href="#">退款说明</a></dd>
+          <dd><a href="#">取消订单</a></dd>
+        </dl>
+        <dl>
+          <dt>服务热线</dt>
+          <dd><a href="#">在线客服</a></dd>
+          <dd><a href="#">客服电话 400-0000-000</a></dd>
+          <dd><a href="#">工作时间 周一至周日 8:00-18:00</a></dd>
+        </dl>
+        <div class="right">
+          <ul>
+            <li>
+              <img src="./images/wechat.png" alt="">
+              <p>微信公众号</p>
+            </li>
+            <li>
+              <img src="./images/app.png" alt="">
+              <p>APP下载二维码</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>
+          <a href="#">关于我们</a> |
+          <a href="#">帮助中心</a> |
+          <a href="#">售后服务</a> |
+          <a href="#">配送与验收</a> |
+          <a href="#">商务合作</a> |
+          <a href="#">搜索推荐</a>
+        </p>
+        <p>@CopyRight © 小兔鲜</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const list = document.querySelector('#carousel-list');
+    const dots = document.querySelectorAll('#carousel-dots li');
+    const banner = document.querySelector('#banner-wrapper');
+
+    let currentIndex = 0;
+    let timer = null;
+    const totalSlides = dots.length;
+
+    function showSlide(index) {
+      if (index < 0) index = totalSlides - 1;
+      if (index >= totalSlides) index = 0;
+
+      list.style.transform = `translateX(-${index * 100}%)`;
+
+      const activeDot = document.querySelector('#carousel-dots .active');
+      if (activeDot) activeDot.classList.remove('active');
+      dots[index].classList.add('active');
+
+      currentIndex = index;
+    }
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentIndex = index;
+        showSlide(currentIndex);
+      });
+    });
+
+    function startAutoPlay() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(() => {
+        showSlide(currentIndex + 1);
+      }, 2000);
+    }
+
+    function stopAutoPlay() {
+      clearInterval(timer);
+    }
+
+    banner.addEventListener('mouseenter', stopAutoPlay);
+    banner.addEventListener('mouseleave', startAutoPlay);
+
+    startAutoPlay();
+
+    // ================= 核心修复：自动读取购物车数量 =================
+    // 页面加载时，自动去 localStorage 查一下有多少商品
+    const cart = JSON.parse(localStorage.getItem('myCart')) || [];
+    const cartCount = document.getElementById('cart-count');
+    if (cartCount) {
+      cartCount.innerText = cart.length;
+    }
+  </script>
+</body>
+
+</html>
